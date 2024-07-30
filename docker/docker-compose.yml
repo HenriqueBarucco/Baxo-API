@@ -1,0 +1,27 @@
+services:
+  postgres:
+    container_name: postgres_baxo_api
+    image: postgres:14-alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - database:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=usr_baxo_api
+      - POSTGRES_PASSWORD=baxo_api
+
+  rabbitmq:
+    container_name: rabbitmq_baxo_api
+    image: rabbitmq:3-management-alpine
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq:/var/lib/rabbitmq/
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+
+volumes:
+  database:
+  rabbitmq:

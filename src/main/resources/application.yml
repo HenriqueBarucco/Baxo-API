@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: Baxo-API
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/postgres}
+    username: ${DATABASE_USER:usr_baxo_api}
+    password: ${DATABASE_PASSWORD:baxo_api}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    show-sql: ${SHOW_SQL:false}
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    virtual-host: ${RABBITMQ_VIRTUAL_HOST:/}
+    username: ${RABBITMQ_USER:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
+  flyway:
+    out-of-order: true
+
+server:
+  error:
+    include-stacktrace: never
