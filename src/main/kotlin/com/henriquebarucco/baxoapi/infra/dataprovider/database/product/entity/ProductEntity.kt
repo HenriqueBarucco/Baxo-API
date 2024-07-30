@@ -25,7 +25,7 @@ data class ProductEntity(
     val id: UUID? = null,
     val name: String,
     val url: String,
-    val price: Double?,
+    var price: Double?,
     val enabled: Boolean,
     @NotFound(action = NotFoundAction.IGNORE)
     @ManyToOne

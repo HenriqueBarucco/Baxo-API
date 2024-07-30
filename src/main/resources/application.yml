@@ -34,6 +34,9 @@ rabbitmq:
   process:
     exchange: ${RABBITMQ_PROCESS_EXCHANGE:baxo-exchange}
     routing-key: ${RABBITMQ_PROCESS_ROUTING_KEY:product-process}
+  processed:
+    enabled: ${RABBITMQ_PROCESSED_ENABLED:true}
+    queue: ${RABBITMQ_PROCESSED_QUEUE:product-processed}
 
 server:
   error:
