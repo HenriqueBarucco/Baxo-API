@@ -20,6 +20,7 @@ class UserEntityMapper {
                 name = entity.name,
                 email = entity.email,
                 phone = entity.phone,
+                password = entity.password,
             )
     }
 }
