@@ -7,4 +7,6 @@ import java.util.UUID
 
 interface ProductRepository : JpaRepository<ProductEntity, UUID> {
     fun findAllByUser(user: UserEntity): List<ProductEntity>
+
+    fun findAllByEnabledTrue(): List<ProductEntity>
 }

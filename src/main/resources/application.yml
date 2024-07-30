@@ -27,6 +27,14 @@ jwt:
   secret: ${JWT_SECRET:z47udM6O8OJ6JaPmcNLfz0x7yGN3vggrxtc7XMxi}
   expiration: ${JWT_EXPIRATION:12h}
 
+schedule:
+    cron: ${SCHEDULE_CRON:0 */1 * * * *}
+
+rabbitmq:
+  process:
+    exchange: ${RABBITMQ_PROCESS_EXCHANGE:baxo-exchange}
+    routing-key: ${RABBITMQ_PROCESS_ROUTING_KEY:product-process}
+
 server:
   error:
     include-stacktrace: never
