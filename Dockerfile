@@ -3,6 +3,8 @@ FROM gradle:jdk21-alpine AS build
 WORKDIR /app
 
 ADD . .
+RUN chmod +x ./gradlew
+
 RUN ./gradlew clean bootJar
 RUN ls -la build/libs
 
