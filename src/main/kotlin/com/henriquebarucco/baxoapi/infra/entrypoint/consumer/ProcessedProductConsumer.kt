@@ -2,6 +2,7 @@ package com.henriquebarucco.baxoapi.infra.entrypoint.consumer
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.henriquebarucco.baxoapi.domain.product.interactor.FindProductByIdInteractor
+import com.henriquebarucco.baxoapi.domain.product.interactor.NotifyProductPriceChangeInteractor
 import com.henriquebarucco.baxoapi.domain.product.interactor.UpdateProductPriceInteractor
 import com.henriquebarucco.baxoapi.infra.entrypoint.consumer.dto.MessageDto
 import org.slf4j.LoggerFactory
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service
 class ProcessedProductConsumer(
     private val findProductByIdInteractor: FindProductByIdInteractor,
     private val updateProductPriceInteractor: UpdateProductPriceInteractor,
+    private val notifyProductPriceChangeInteractor: NotifyProductPriceChangeInteractor,
 ) {
     private val log = LoggerFactory.getLogger(ProcessedProductConsumer::class.java)
     private val mapper = jacksonObjectMapper()
@@ -28,7 +30,7 @@ class ProcessedProductConsumer(
             val product = this.findProductByIdInteractor.execute(id)
 
             if (product.price == null || product.price > value) {
-                log.info("Product price is null or greater than the new value")
+                this.notifyProductPriceChangeInteractor.execute(product, value)
             }
 
             this.updateProductPriceInteractor.execute(id, value)

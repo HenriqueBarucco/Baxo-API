@@ -38,6 +38,10 @@ rabbitmq:
     enabled: ${RABBITMQ_PROCESSED_ENABLED:true}
     queue: ${RABBITMQ_PROCESSED_QUEUE:product-processed}
 
+easywhatsapp:
+  url: ${EASYWHATSAPP_URL:https://easy-whatsapp-api.henriquebarucco.com.br}
+  token: ${EASYWHATSAPP_TOKEN}
+
 server:
   error:
     include-stacktrace: never
